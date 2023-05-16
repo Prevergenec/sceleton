@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sceleton</title>
+</head>
+
+<style>
+body {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+	background: #eff7f2;
+	font-family: "Lato", sans-serif;
+}
+.user-card {
+	width: 300px;
+	box-shadow: -10px 5px 20px rgba(0, 0, 0, 0.3);
+	border-radius: 15px;
+	overflow: hidden;
+	background: white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	transition: box-shadow 0.2s ease-in;
+	cursor: pointer;
+  padding: 50px 0;
+}
+.user-card.skeleton .text {
+  background: #e2e2e2;
+  color: transparent;
+  position: relative;
+  overflow: hidden;
+}
+.user-card.skeleton .text::before {
+  content: "";
+  position: absolute;
+  left: 0%;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  background: linear-gradient(to right, #e2e2e2 25%, #d5d5d5 50%, #e2e2e2 100%);
+  animation-name: gradient-animation;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+@keyframes gradient-animation {
+  from {
+    left: 0%;
+  }
+  to {
+    left: 100%;
+  }
+}
+</style>
+<body>
+	<div class="user-card skeleton">
+			<div class="text">Anamika Roy</div>
+	</div>
+
+	<script>
+		const sceleton = document.querySelector(".user-card");
+		
+		setTimeout(() => {
+			sceleton.classList.remove("skeleton");
+		}, 3000);
+	</script>
+</body>
+</html>
